@@ -37,7 +37,7 @@ def test_not_multiple_to_4_encode():
 
 
 def test_fatal_array_encode():
-    data = [random.randint(0, 255) for i in range(3*(10**6))]
+    data = [random.randint(0, 255) for i in range(3 * (10**6))]
     data = bytes(data)
     assert base85ed.encode(data) == base64.b85encode(data)
 
@@ -80,7 +80,7 @@ def test_not_multiple_to_5_decode():
 
 
 def test_fatal_array_decode():
-    data = [random.randint(0, 255) for i in range(3*(10**6))]
+    data = [random.randint(0, 255) for i in range(3 * (10**6))]
     data = bytes(data)
     data = base64.b85encode(data)
     assert base85ed.decode(data) == base64.b85decode(data)

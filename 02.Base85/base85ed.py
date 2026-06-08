@@ -16,7 +16,12 @@ def encode(b: bytes):
         return b""
     while i + 4 <= len(b):
         block = b[i : i + 4]
-        number = block[0] * (pow(256, 3)) + block[1] * (pow(256, 2)) + block[2] * 256 + block[3]
+        number = (
+            block[0] * (pow(256, 3))
+            + block[1] * (pow(256, 2))
+            + block[2] * 256
+            + block[3]
+        )
         digits = []
         for j in range(5):
             digits.append(number % 85)
@@ -28,14 +33,14 @@ def encode(b: bytes):
     if i < len(b):
         end = b[i:]
         len_end = len(end)
-        end = end + b'\x00'*(4 - len_end)
+        end = end + b"\x00" * (4 - len_end)
         number = end[0] * (pow(256, 3)) + end[1] * (pow(256, 2)) + end[2] * 256 + end[3]
         digits = []
         for j in range(5):
             digits.append(number % 85)
             number = number // 85
         digits = digits[::-1]
-        digits = digits[0:len_end + 1]
+        digits = digits[0 : len_end + 1]
         for digit in digits:
             result.append(alphabet[digit])
     return bytes(result)
@@ -52,8 +57,14 @@ def decode(b: bytes):
     if len(digits) == 0:
         return b""
     while i + 5 <= len(digits):
-        block = digits[i:i + 5]
-        number = block[0] * (pow(85, 4)) + block[1] * (pow(85, 3)) + block[2] * (pow(85,2)) + block[3] * 85 + block[4]
+        block = digits[i : i + 5]
+        number = (
+            block[0] * (pow(85, 4))
+            + block[1] * (pow(85, 3))
+            + block[2] * (pow(85, 2))
+            + block[3] * 85
+            + block[4]
+        )
         bbytes = []
         for j in range(4):
             bbytes.append(number % 256)
@@ -69,14 +80,19 @@ def decode(b: bytes):
             raise ValueError
         for j in range(5 - len_end):
             end.append(84)
-        number = end[0] * (pow(85, 4)) + end[1] * (pow(85, 3)) + end[2] * (pow(85,2)) + end[3] * 85 + end[4]
+        number = (
+            end[0] * (pow(85, 4))
+            + end[1] * (pow(85, 3))
+            + end[2] * (pow(85, 2))
+            + end[3] * 85
+            + end[4]
+        )
         bbytes = []
         for j in range(4):
             bbytes.append(number % 256)
             number = number // 256
         bbytes = bbytes[::-1]
-        bbbytes = bbytes[:len_end - 1]
+        bbbytes = bbytes[: len_end - 1]
         for bbbyte in bbbytes:
             result.append(bbbyte)
     return bytes(result)
-

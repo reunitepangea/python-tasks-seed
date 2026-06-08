@@ -36,6 +36,7 @@ runs:
       working-directory: ${{ inputs.working-directory }}
       run: |
         uv pip install --upgrade pip
+        uv pip install pytest numpy beartype
 
         if [ -f "pyproject.toml" ] || [ -f "setup.py" ]; then
           uv pip install -e .

@@ -3,7 +3,7 @@ Sorting algorithms
 """
 
 from __future__ import annotations
-from typing import Any
+from typing import Any, Optional
 from comp_swap_container import CompSwapList
 import random
 
@@ -22,7 +22,7 @@ def trivial_sort2(data: CompSwapList[Any]):
     if data.less(1, 0):
         data.swap(0, 1)
 
-def quick_sort(data: CompSwapList[Any], lo: int = 0, hi: int = None):
+def quick_sort(data: CompSwapList[Any], lo: int = 0, hi: Optional[int] = None):
     if hi is None:
         hi = len(data) - 1
     if lo >= hi:

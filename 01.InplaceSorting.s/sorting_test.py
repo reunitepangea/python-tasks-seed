@@ -108,6 +108,7 @@ def test_quick_sort_doubelements_same():
     sortings.quick_sort(a2)
     assert list(a2) == [6, 6, 6]
 
+
 def test_quick_sort_fatal_array(fatal_array):
     fatal_array_copy = CompSwapList(fatal_array)
     sortings.quick_sort(fatal_array_copy)

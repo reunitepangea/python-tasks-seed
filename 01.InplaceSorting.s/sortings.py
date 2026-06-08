@@ -39,6 +39,7 @@ def quick_sort(data: CompSwapList[Any], lo: int = 0, hi: Optional[int] = None):
     quick_sort(data, lo, i - 1)
     quick_sort(data, i + 1, hi)
 
+
 def selection_sort(data: CompSwapList[Any]):
     n = len(data)
     for i in range(n - 1):

@@ -22,6 +22,7 @@ def trivial_sort2(data: CompSwapList[Any]):
     if data.less(1, 0):
         data.swap(0, 1)
 
+
 def quick_sort(data: CompSwapList[Any], lo: int = 0, hi: Optional[int] = None):
     if hi is None:
         hi = len(data) - 1
@@ -40,9 +41,9 @@ def quick_sort(data: CompSwapList[Any], lo: int = 0, hi: Optional[int] = None):
 
 def selection_sort(data: CompSwapList[Any]):
     n = len(data)
-    for i in range(n-1):
+    for i in range(n - 1):
         mn = i
-        for j in range(i+1, n):
+        for j in range(i + 1, n):
             if data.less(j, mn):
                 mn = j
         if mn != i:

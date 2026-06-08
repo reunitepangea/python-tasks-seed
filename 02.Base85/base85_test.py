@@ -29,6 +29,7 @@ def test_multiple_to_4_encode():
     data = bytes(data)
     assert base85ed.encode(data) == base64.b85encode(data)
 
+
 def test_not_multiple_to_4_encode():
     data = [random.randint(0, 255) for i in range(1025)]
     data = bytes(data)
@@ -89,6 +90,7 @@ def test_unacceptable_decode():
     data = "привет".encode()
     with pytest.raises(ValueError):
         base85ed.decode(data)
+
 
 def tests_invertibility():
     data1 = [random.randint(0, 255) for i in range(1025)]
